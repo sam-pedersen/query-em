@@ -1,131 +1,31 @@
-# Query 'Em All Workshop
+# Pokémon Pokedex
 
-## Setup
+## Overview
 
-### Cloning and Installation
+This project is a dynamic Pokédex application built with React that allows users to browse Pokémon from the first generation. Each Pokémon is displayed in its own card format, showcasing its name and image. Users can click on each Pokémon to view more details on a dedicated page.
 
-- [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
+## Features
 
-  ```sh
-  cd query-em-all
-  npm i
-  npm run dev
-  ```
+- Fetches Pokémon data from the [PokéAPI](https://pokeapi.co).
+- Displays Pokémon cards with images and names.
+- Responsive design suitable for various screen sizes.
+- Interactive links to Pokémon detail pages.
+- Loading spinner for improved user experience while data is being fetched.
+- Error handling for failed API requests.
 
-  </details>
+## Technologies Used
 
-### Looking around
+- **React**: A JavaScript library for building user interfaces.
+- **React Router**: For navigating between different Pokémon detail pages.
+- **TanStack Query**: For managing server state and data fetching.
+- **CSS**: For styling the application.
 
-`client/apis/pokemon.ts` is written for you! Take a look at it and then try it out in Thunder Client (or another HTTP client of your choice) to see what it returns. The types are also written for you in `models/pokemon.ts`, they only contain the fields we are interested in.
+## Installation
 
-`<App>` is rendering two client-side routes, `/` and `/pokemon/:name`:
+To get started with this project, follow these steps:
 
-- `/` renders `<PokemonList>`, a list of hardcoded Pokémon
-- `/pokemon/:name` renders `<PokemonDetail>`, a single Pokémon (with lots more information), also hardcoded
+1. **Clone the repository**:
 
-Visit [localhost:5173/](http://localhost:5173/) and [localhost:5173/pokemon/bulbasaur](http://localhost:5173/pokemon/bulbasaur), Bulbasaur is currently our only resident Pokémon. We will be replacing the hardcoded data with data from the API.
-
-### Setting up React Query
-
-- [ ] Install React Query and React Query Devtools
-
-```sh
-npm i -D @tanstack/react-query @tanstack/react-query-devtools
-```
-
-- [ ] In `client/index.tsx` import `{ QueryClient, QueryClientProvider }` from `@tanstack/react-query`
-
-- [ ] In `client/index.tsx` import `{ ReactQueryDevtools }` from `@tanstack/react-query-devtools`
-
-- [ ] Create a new `QueryClient` instance and wrap the `<RouterProvider />` component in a `<QueryClientProvider>` component, passing the `QueryClient` instance as a prop
-
-- [ ] Within the `QueryClient` instance, add in the `<ReactQueryDevtools />` component.
-
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
-
-  ```tsx
-  // creating a new QueryClient instance
-  const queryClient = new QueryClient()
-
-  // ...
-
-  root.render(
-    // wrapping the app in a QueryClientProvider
-    // and passing the QueryClient instance as a prop
-    // Adding ReactQueryDevtools
-    <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      <ReactQueryDevtools />
-    </QueryClientProvider>
-  )
-  ```
-
-  </details>
-
----
-
-## Workshop Time!
-
-### 1. Fetching a List of Pokémon from the API
-
-- [x] As a user, I want to see a list of the first generation of Pokémon so that I can see what Pokémon there are
-
-- [x] In `<PokemonList>`, use `useQuery` and `fetchPokemonGeneration` to render a list of Pokémon (just the names)
-
-- [x] As a user, I want to see a loading state while the list of Pokémon is being fetched so that I know something is happening
-
-- [x] As a user, if something goes wrong while fetching the list of Pokémon, I want to see an error state so that I know something went wrong
-
----
-
-### 2. Fetching a Single Pokémon
-
-- [x] As a user, when I click on a Pokémon in the list, I want to see more information about that Pokémon so that I can learn more about it
-
-  - In `<PokemonList>`, add a `<Link>` to each Pokémon that links to `/pokemon/:name`, where `:name` is the name of the Pokémon, note: the URL should be the lowercase name of the Pokémon (e.g. `/pokemon/bulbasaur`)
-  - In `<PokemonDetail>`, use `useQuery` and `fetchPokemonByName` to render the Pokémon's name, image, and types
-  <details style="padding-left: 2em">
-    <summary>More about Pokémon details</summary>
-    
-    Have a look in `models/pokemon.ts` at the `Pokemon` type to see what properties are available to you.
-  </details>
-
-  - In `<PokemonDetail>`, add loading and error states
-
-
----
-
-### 3. Adding More Data to `<PokemonDetail>`
-
-- [x] As a user, I want to see more information about the Pokémon so that I can learn more about it
-  - In `<PokemonDetail>`, use `console.log` to see what the _actual_ API is returning
-  - Choose some fields and add them to the `Pokemon` type in `models/pokemon.ts`
-  - In `<PokemonDetail>`, render those new fields in some way of your choosing. E.g. look up for to render audio files, or dig deep into the different image files the api returns. 
-
----
-
-### 4. See Pokémon by generation
-
-- [ ] As a user, on the homepage (`/`) I want to see a list of all the generations, so that I can click on one, go to `/generations/:generationId` and see the list of Pokémon for that generation
-
-
----
-
-### 5. Stretch - Search for a pokemon
-
-- [ ] As a user, I want to see a search bar at the top of the page, so that I can search for a Pokémon by name, when I hit enter, I want to be taken to `/search?name=pokemonName`, which should display a filtered list of Pokémon.
-- [ ] Look up [useSearchParams](https://reactrouter.com/en/main/hooks/use-search-params) from the `react-router` docs. 
-
-
----
-
-## Submitting this Challenge for Marking
-
-This challenge can be used for the following trello assessment(s):
-
-- **WD02: Build a Javascript application that consumes a restful JSON API**
-
-[Provide feedback on this repo](https://docs.google.com/forms/d/e/1FAIpQLSfw4FGdWkLwMLlUaNQ8FtP2CTJdGDUv6Xoxrh19zIrJSkvT4Q/viewform?usp=pp_url&entry.1958421517=query-em-all)
+   ```bash
+   git clone https://github.com/yourusername/pokemon-pokedex.git
+   cd pokemon-pokedex
